@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .section {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .header img {
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            background-color: #333;
+            transition: background-color 0.3s;
+        }
+        .deconnexion {
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            color: #000000;
+            background-color: #fff;
+            transition: background-color 0.3s;
+        }
+        .deconnexion:hover {
+            background-color: #000000;
+            color: #fff;
+        }
+        .cardht {
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: center;
+            color: #fff;
+            background-color: #333;
+            transition: background-color 0.3s;
+            width: 90px;
+            height: 80px;
+        }
+        .btn:hover {
+            background-color: #d32f2f;
+        }
+        .projects, .developers {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            width: 1300px;
+            text-align: center;
+            background-color: #fafafa;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            align-self: center;
+
+        }
+        .card h3 {
+            color: #d32f2f;
+        }
+        .centered-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Section 1: Logo, App Name, Profile, Logout -->
+<div class="section header">
+    <h1><img th:src="@{/OIG3.jpeg}" alt="Logo" style="height: 40px;"> EasyProjManage</h1>
+    <div class="buttons">
+        <form action="" method="post">
+            <button class="btn" type="submit">Profil</button>
+        </form>
+        <form th:action="@{/Showassignmentaffec}" method="get">
+            <input type="hidden" th:name="id_dev" th:value="${dev.id}" />
+            <button class="btn" type="submit">Projets</button>
+        </form>
+        <form th:action="@{/Showeval}" method="get">
+            <input type="hidden" th:name="id_dev" th:value="${dev.id}" />
+            <button class="btn" type="submit">Evaluations</button>
+        </form>
+        <form th:action="@{/deconnexion}" method="post">
+            <button class="deconnexion" type="submit">Déconnexion</button>
+        </form>
+
+    </div>
+</div>
+
+<!-- Section 2: Aperçu des projets en cours -->
+<div class="section">
+    <h2>Developers</h2>
+    <div class="projects">
+
+        <div th:each="d :${dev} " class="card">
+            <h5 th:text="${d.name}"></h5>
+            <p>Notre application est conçue pour les esprits créatifs et ambitieux comme le tien. Plonge dans un univers où chaque tâche est une opportunité de briller et où chaque projet est une aventure à conquérir</p><p th:text="${d.skills}"></p>
+        </div>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
+

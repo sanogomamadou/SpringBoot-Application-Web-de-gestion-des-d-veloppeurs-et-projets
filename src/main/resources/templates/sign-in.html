@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in EasyProjManage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav img {
+            width: 100px;
+        }
+
+        .title-wrapper {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .form-wrapper {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-control input {
+            width: 100%;
+            padding: 10px;
+            background: #444;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        .form-control label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            pointer-events: none;
+            transition: 0.2s;
+            color: #aaa;
+        }
+
+        .form-control input:focus + label,
+        .form-control input:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 10px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #e50914;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f40612;
+        }
+
+        .form-help {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .form-help a {
+            color: #aaa;
+        }
+
+        .form-help a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        p a {
+            color: #fff;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        small {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="#"><img th:src="@{/OIG3.jpeg}" alt="EasyProjManage Logo"></a>
+</nav>
+<div class="title-wrapper">
+    <h1>Welcome to EasyProjManage</h1>
+</div>
+<div class="form-wrapper">
+    <h2>Sign In</h2>
+    <form th:action="@{/sign-in}" method="post">
+        <div class="form-control">
+            <input type="text" id="login" name="login" required>
+            <label>Login</label>
+        </div>
+        <div class="form-control">
+            <input type="password" id="password" name="password" required>
+            <label>Password</label>
+        </div>
+        <button type="submit">Sign In</button>
+    </form>
+    <p th:text="${error}"></p>
+    <p>New to EasyProjManage? <a th:href="@{/sign-up}">Sign up now</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Assignements</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            max-width: 100px;
+        }
+        table th {
+            background-color: #333;
+            color: #fff;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .btn {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            background-color: #333;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #d32f2f;
+        }
+        .centered {
+            text-align: center;
+        }
+        .action-btn {
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 3px;
+            color: #fff;
+            background-color: #d32f2f;
+            transition: background-color 0.3s;
+        }
+        .action-btn:hover {
+            background-color: #b71c1c;
+        }
+        .action-btn.edit {
+            background-color: #333;
+        }
+        .action-btn.edit:hover {
+            background-color: #d32f2f;
+        }
+        .action-btn.delete {
+            background-color: #e53935;
+        }
+        .action-btn.delete:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Liste des Projets Assignés</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Projet</th>
+            <th>Durée estimée</th>
+            <th>Description</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="assignment : ${listassignment}" th:if="${assignment.developer.id} == ${id_dev}">
+            <td th:text="${assignment.project.title}"></td>
+            <td th:text="${assignment.project.estimatedDuration}"></td>
+            <td th:text="${assignment.project.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
